@@ -1,0 +1,41 @@
+{
+    "name": "persiliao/eventy",
+    "description": "One similar to Wordpress filters hook system rolled in to a class to be ported into any PHP-based system",
+    "type": "library",
+    "keywords": [
+        "hook",
+        "event",
+        "wordpress",
+        "plugin",
+        "api"
+    ],
+    "license": "MIT",
+    "homepage": "https://www.github.com/persiliao/eventy",
+    "authors": [
+        {
+            "name": "PersiLiao",
+            "email": "xiangchu.liao@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.2",
+        "illuminate/collections": "^8.4",
+        "opis/closure": "^3.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "PersiLiao\\Eventy\\": "src/"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "PersiLiao\\Eventy\\Test\\": "tests/"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.3"
+    }
+}
