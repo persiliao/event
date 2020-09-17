@@ -10,6 +10,7 @@ use PHPUnit\Framework\TestCase;
 use function json_encode;
 use function PersiLiao\Eventy\addAction;
 use function PersiLiao\Eventy\addFilter;
+use function PersiLiao\Eventy\applyFilters;
 use function PersiLiao\Eventy\doAction;
 use function PersiLiao\Eventy\getFilter;
 use function PersiLiao\Eventy\removeFilter;
@@ -45,37 +46,18 @@ class EventsTest extends TestCase{
         ]);
     }
 
-    public function testRemoveAllActions()
-    {
-        $this->events->addFilter('filter', [
-            $this,
-            'filterPost'
-        ]);
-    }
-
-    public function testAddFilter()
-    {
-
-    }
-
-    public function testRemoveAllFilters()
-    {
-
-    }
-
-    public function testGetFilter()
-    {
-
-    }
-
-    public function testRemoveAction()
-    {
-
-    }
-
     public function testApplyFilters()
     {
-
+        $this->post = [
+            'title' => '',
+            'description' => 'description'
+        ];
+        addFilter('post', [
+            $this,
+            'filterPost'
+        ], 10, 2);
+        $this->post = applyFilters('post', $this->post);
+        self::assertEquals($this->post, [ 'description' => 'description' ]);
     }
 
     public function addPost($title, $description): void
@@ -88,14 +70,16 @@ class EventsTest extends TestCase{
         }
     }
 
-    public function filterPost(array $post): void
+    public function filterPost($post)
     {
-        if(isset($post['title'])){
-            $post['title'] = '';
+        if(isset($post['title']) && empty($post['title'])){
+            unset($post['title']);
         }
-        if(isset($post['description'])){
-            $this->post['description'] = '';
+        if(isset($post['description']) && empty($post['description'])){
+            unset($post['description']);
         }
+
+        return $post;
     }
 
     protected function setUp(): void

@@ -30,11 +30,11 @@ class Filter extends Event{
         if($this->getListeners()){
             $this->getListeners()->where('hook', $action)->each(function($listener) use ($args, $argsNums){
                 if(0 == $listener['arguments']){
-                    call_user_func($listener['arguments']);
+                    $this->value = call_user_func($listener['arguments']);
                 }elseif($listener['arguments'] >= $argsNums){
-                    call_user_func_array($listener['callback'], $args);
+                    $this->value = call_user_func_array($listener['callback'], $args);
                 }else{
-                    call_user_func_array($listener['callback'], array_slice($args, 0, (int)$listener['arguments']));
+                    $this->value = call_user_func_array($listener['callback'], array_slice($args, 0, (int)$listener['arguments']));
                 }
             });
         }

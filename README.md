@@ -37,9 +37,7 @@ function deleteMeta(stdClass $post, string $key)
 }
 
 PersiLiao\Eventy\addFilter('post','addMeta', 10, 1);
-PersiLiao\Eventy\doAction('post', 'author');
-
-
+PersiLiao\Eventy\applyFilters('post', 'author');
 
 ```
 

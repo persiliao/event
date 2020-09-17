@@ -104,7 +104,7 @@ function getFilter(): Filter
  * @param string $hook
  * @param mixed  ...$args
  *
- * @return void
+ * @return mixed
  * @see Events::applyFilters()
  */
 function applyFilters(string $hook, ...$arguments)
