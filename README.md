@@ -30,15 +30,14 @@ PersiLiao\Eventy\doAction('post');
 
 function deleteMeta(stdClass $post, string $key)
 {
-		if(isset($post->meta[$key])){
+	if(isset($post->meta[$key])){
         unset($post->meta[$key]);
     }
   	return $post;
 }
 
 PersiLiao\Eventy\addFilter('post','addMeta', 10, 1);
-PersiLiao\Eventy\applyFilters('post', 'author');
-
+$post = PersiLiao\Eventy\applyFilters('post', $post, 'author');
 ```
 
 # LICENSE
