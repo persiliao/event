@@ -26,7 +26,7 @@ function addMeta(stdClass $post, string $key, string $value)
 }
 
 PersiLiao\Eventy\addAction('post','addMeta', 10, 3);
-PersiLiao\Eventy\doAction('post');
+PersiLiao\Eventy\doAction('post', $post, 'author', 'PersiLiao');
 
 function deleteMeta(stdClass $post, string $key)
 {
