@@ -17,7 +17,7 @@ abstract class Event{
 
     public function __construct()
     {
-        $this->listeners = collect([]);
+        $this->listeners = new Collection([]);
     }
 
     /**
