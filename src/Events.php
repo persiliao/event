@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace PersiLiao\Eventy;
 
-use PersiLiao\Eventy\Exception\InvalidArgumentException;
+use InvalidArgumentException;
 
 use function is_callable;
 
